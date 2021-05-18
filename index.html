@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple tweetter clone</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.min.css">
+</head>
+<body>
+  <div id="app" class="container">
+    <div class="card">
+      <i class="fab fa-twitter fa-lg fa-fw"></i>
+      <!-- Register an account -->
+      <div class="register" v-if="!registered">
+        <h2>Create your account</h2>
+        <form v-on:submit.prevent="registerAccount">
+          <div class="form_group">
+            <label for="name">Name
+              <span> {{ maxCharsName }}</span>
+            </label>
+            <input type="text" v-model="name" :maxlength="max_length" required>
+          </div>
+          <div class="form_group">
+            <label for="email">Email
+              <span> {{ maxCharsEmail }}</span>
+            </label>
+            <input type="email" v-model="email" :maxlength="max_length" required>
+          </div>
+          <div class="form_group">
+            <label for="password">Password
+              <span> {{ maxCharsPassword }}</span>
+            </label>
+            <input type="password" v-model="password" :maxlength="max_pass_length" required>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+        <div v-if="error.length > 0"> {{error}}</div>
+      </div>
+      <!-- Add tweet -->
+      <div class="tweetBox" v-else>
+        <h2>Welcome {{ userData.name }} write your first Tweet</h2>
+        <form v-on:submit.prevent="sendTweet">
+          <div class="form_group">
+            <label for="tweet">
+              Send your tweet
+              <span> {{ maxCharsTweet }}</span>
+            </label>
+            <textarea name="tweet" id="tweet" cols="30" rows="10" v-model="tweetMsg" :maxlength="max_tweet_length"></textarea>
+          </div>
+          <button type="submit">Tweet</button>
+        </form>
+      </div>
+    </div>
+    <!-- Show all tweets -->
+    <div class="card_tweets">
+      <section class="tweets" v-if="tweets.length > 0">
+          <h2>Tweets</h2>
+          <tweet-message v-for="(tweet, index) in tweets"  v-bind:tweet="tweet" :key="index" @remove-tweet="removeTweet(index)"></tweet-message>
+      </section>
+      <div v-else>No tweets to show</div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@3.0.11"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
+

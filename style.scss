@@ -1,0 +1,87 @@
+.card {
+  width: 600px;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(12, 12, 32);
+  padding: 2rem;
+  color: white;
+  border-radius: 20px;
+  position: relative;
+}
+
+.card_tweets {
+  width: 600px;
+  margin: 50px auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  padding: 2rem;
+  color: rgb(12, 12, 43);
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid lightgray
+}
+
+.tweetMsg {
+  padding: 1rem;
+  border-bottom: 1px solid lightgrey;
+  word-break: break-all;
+  display: flex;
+  flex-direction: column;
+}
+
+.tweetDate {
+  color: #9191ad;
+  font-size: 0.75rem;
+}
+.tweet_remove {
+  align-self: flex-end;
+  cursor: pointer;
+}
+.tweet_remove:hover {
+  color: red;
+}
+
+.form_group {
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.form_group label {
+  color: grey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_group input,
+.form_group textarea {
+  height: 1.5rem;
+  border-style: none;
+  background-color: transparent;
+  color: white;
+  text-transform: uppercase;
+
+}
+
+.form_group input:focus,
+.form_group textarea:focus {
+  border-style: none;
+  outline: none;
+}
+
+button {
+  border-radius: 15px;
+  padding: 5px 30px;
+  background-color: #1da7f2;
+  border: none;
+  color: white;
+  position: absolute;
+  right: 20px;
+}
+
+.errorMessage {
+  color: red
+}
